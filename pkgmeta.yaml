@@ -1,0 +1,14 @@
+package-as: TodoChecklister
+ignore: # Files and directories beginning with a dot (such as .git) are automatically ignored, as is the pgkmeta file itself.
+    - button.png
+    - demo.gif
+    - icon.png
+    - README.md
+
+externals:
+    src/libs/LibStub:
+        url: https://repos.wowace.com/wow/libstub/trunk
+        tag: latest
+    src/libs/LibDBIcon-1.0:
+        url: https://repos.wowace.com/wow/libdbicon-1-0/trunk/LibDBIcon-1.0
+        tag: latest

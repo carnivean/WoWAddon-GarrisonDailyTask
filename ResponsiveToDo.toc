@@ -1,0 +1,12 @@
+## Interface: 11302
+## Title: GarrisonDailyTasks
+## Author: Carnivean (https://github.com/carnivean) - UI/Responsive frame based on TODO by Matheus Assis Rios (github.com/AssisrMatheus)
+## Notes: Daily Tasks for Garrison Goldmaking.
+## Version: 1.2.3
+## DefaultState: enabled
+## OptionalDeps: LibStub, LibDataBroker
+## SavedVariables: TodoChecklisterDB, TodoChecklisterMapIcon, TodoChecklisterSettingsDB, GarrisonMasterDB
+
+src\init.xml
+src\init.lua
+bindings.xml
