@@ -1,4 +1,4 @@
-## Interface: 11302
+## Interface: 90001
 ## Title: Garriso Master
 ## Author: Carnivean (https://github.com/carnivean) - UI/Responsive frame based on TODO by Matheus Assis Rios (github.com/AssisrMatheus)
 ## Notes: Daily tasklist for Garrison Goldmaking.
