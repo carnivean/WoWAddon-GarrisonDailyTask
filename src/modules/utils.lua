@@ -23,8 +23,9 @@ function Utils:GetThemeColor()
 end
 
 function Utils:OldDate(old, new)
-	--- date can only be newer, makes the comparison easier
-	if (old["year"] < new["year"] or (old["month"] < new["month"] or (old["day"] < new["day"]))) then
+	 --return true
+	 -- date can only be newer, makes the comparison easier
+	if (old["year"] < new["year"] or old["yday"] < new["yday"]) then
 		return true
 	end
 	return false

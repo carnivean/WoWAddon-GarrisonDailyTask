@@ -50,7 +50,7 @@ local TodoList = TodoAddon.TodoList
 ---@param text string @New element to be appended to the list
 function TodoList:AddItem(text)
 	-- If text is not empty
-	if (text and text ~= nil and text ~= "") then
+	if (text and text ~= nil and text ~= "" and TodoList:GetIndexByText(text) == 0) then
 		-- Adds one at the end of array
 		table.insert(
 			TodoChecklisterDB,
@@ -90,6 +90,20 @@ function TodoList:UpdateItem(indexToUpdate, updatedItem)
 		return true
 	end
 	return false
+end
+
+function TodoList:MoveToFront(charname)
+	local unusedIndex = 1
+
+	for k, v in pairs(TodoChecklisterDB) do
+		if (string.find(v["text"], charname, 1, true) and unusedIndex < k) then
+			--exchange the two positions
+			tmp = TodoChecklisterDB[unusedIndex]
+			TodoChecklisterDB[unusedIndex] = v
+			TodoChecklisterDB[k] = tmp
+			unusedIndex = unusedIndex  + 1
+		end
+	end
 end
 
 ---

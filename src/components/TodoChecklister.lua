@@ -79,9 +79,30 @@ end
 ---
 ---Removes the given element from the list
 ---@param todoItem TodoItem @The item to be removed from the list
+function TodoChecklisterFrame:RemoveItemByText(text)
+	local indexToRemove = TodoList:GetIndexByText(text)
+	while (indexToRemove > 0) do
+		self:RemoveItemWithIndex(indexToRemove)
+		indexToRemove = TodoList:GetIndexByText(text)
+	end
+end
+
+---
+---Removes the given element from the list
+---@param todoItem TodoItem @The item to be removed from the list
 function TodoChecklisterFrame:RemoveItem(todoItem)
 	local indexToRemove = TodoList:GetIndexByItem(todoItem)
 	self:RemoveItemWithIndex(indexToRemove)
+end
+
+---
+--- Moves the items containing the string to the front of the list
+---@param charname String @Of the current character to be moved to the front
+function TodoChecklisterFrame:MoveToFront(charname)
+	TodoList:MoveToFront(charname)
+
+	self.memoizationId = self.memoizationId + 1
+	self:OnUpdate()
 end
 
 ---

@@ -44,9 +44,24 @@ TodoAddon.character = "";
 local main = CreateFrame("Frame", addonName .. "MAINFRAME", UIParent)
 TodoAddon.main = main
 
-function TodoAddon:Init(event, name)
-    if(event == "TRADE_SKILL_SHOW" or event == "CHAT_MSG_TRADESKILLS") then
+function TodoAddon:Init(event, name, arg2, arg3, arg4, arg5)
+    if(event == "UNIT_SPELLCAST_SUCCEEDED") then
+        GarrisonMaster:eventManagerSpellCast(event, name, arg2, arg3)
+        return
+    end
+    if(event == "TRADE_SKILL_SHOW" or event == "CHAT_MSG_TRADESKILLS" or event == "CHAT_MSG_LOOT") then
         GarrisonMaster:eventManager(event, name);
+        return
+    end
+
+    if (event == "CURRENCY_DISPLAY_UPDATE") then
+        GarrisonMaster:CurrencyUpdated(name, arg2, arg3, arg4, arg5)
+        return
+    end
+
+    if (event == "GARRISON_LANDINGPAGE_SHIPMENTS") then
+        GarrisonMaster:CheckGarrisonBuildings()
+        main:UnregisterEvent(event);
         return
     end
 
@@ -79,3 +94,7 @@ main:RegisterEvent("ADDON_LOADED")
 main:SetScript("OnEvent", TodoAddon.Init)
 main:RegisterEvent("TRADE_SKILL_SHOW");
 main:RegisterEvent("CHAT_MSG_TRADESKILLS");
+main:RegisterEvent("CHAT_MSG_LOOT");
+main:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED");
+main:RegisterEvent("GARRISON_LANDINGPAGE_SHIPMENTS")
+main:RegisterEvent("CURRENCY_DISPLAY_UPDATE")
